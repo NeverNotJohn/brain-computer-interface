@@ -42,3 +42,7 @@ class brainy:
     def update(self):   # FIXME
         update.refresh(self.board)
         
+    def stop(self):
+        self.board.stop_stream()
+        self.board.release_session()
+        
