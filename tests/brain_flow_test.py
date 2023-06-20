@@ -9,10 +9,8 @@ def update(self):
     channel_16 = data[16]
     
     print(channel_16)
-        
-        
-        
-
+    
+    
 
 def main():
     BoardShim.enable_dev_board_logger()
