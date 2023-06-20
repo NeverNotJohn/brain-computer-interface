@@ -3,12 +3,14 @@
 ########################
 
 from brainflow.board_shim import BoardShim, BrainFlowInputParams, BoardIds, BrainFlowPresets
-from func import update
+from brainy.func import update
 
 
 class brainy:
     
     def __init__(self, board, COM_Num, file=""):
+        
+        print("Initialized!") # DEBUG
         
         """ Logic: """
         
@@ -17,8 +19,8 @@ class brainy:
         if (board == "cyton"):
             params.serial_port = f"COM{COM_Num}"                                    # Only Param needed          
             board_input = BoardShim(BoardIds.CYTON_DAISY_BOARD, params)
-        elif (board == "virtual"):
-            params.master_board = BoardIds.SYNTHETIC_BOARD
+        elif (board == "virtual"):  
+            params.master_board = BoardIds.CYTON_DAISY_BOARD                        # ASSUMES PLAYING BACK CYTON FILE
             params.file = file                                                      # Path to recording file
             board_input = BoardShim(BoardIds.PLAYBACK_FILE_BOARD, params)
         elif (board == "ganglion"):
@@ -32,8 +34,8 @@ class brainy:
         
         """ Start """
         
-        board.prepare_session()
-        board.start_stream()
+        self.board.prepare_session()
+        self.board.start_stream()
 
     """ Functions: """
 
