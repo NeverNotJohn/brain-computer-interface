@@ -3,7 +3,7 @@
 ## Format:
 
 brain-computer-interface
-> Main files... RUN THESE depending on what board you're using
+> Run main.py
 
 brainy
 > class object file for brain wave recorder
