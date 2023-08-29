@@ -1,1 +1,2 @@
 brainflow==5.6.1
+dearpygui==1.9.1
