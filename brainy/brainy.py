@@ -4,6 +4,9 @@
 
 from brainflow.board_shim import BoardShim, BrainFlowInputParams, BoardIds, BrainFlowPresets
 from brainy.func import update
+import numpy as np
+from matplotlib import pyplot as plt
+import time
 
 
 class brainy:
@@ -31,16 +34,35 @@ class brainy:
         
         self.board = board_input
         self.COM = f"COM{COM_Num}"
+        self.data = []
         
         """ Start """
         
         self.board.prepare_session()
         self.board.start_stream()
+        time.sleep(3)   # let buffer
 
     """ Functions: """
 
     def update(self):   # FIXME
         update.refresh(self.board)
+        
+    # Gets 1 second sample from board
+    # Apply filters here?
+    
+    def get_sample(self):
+        time.sleep(1)
+        raw_data = self.board.get_current_board_data(125)
+        print(raw_data[1])
+    
+        
+        # debug
+        plt.title("test")
+        plt.xlabel("time (ms)") 
+        plt.ylabel("Voltage (uV)") 
+        plt.plot(raw_data[1], label="Channel 1") 
+        plt.show()
+        
         
     def stop(self):
         self.board.stop_stream()
