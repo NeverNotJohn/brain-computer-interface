@@ -1,4 +1,4 @@
-from brainy import gui
+from programs import gui
 import dearpygui.dearpygui as dpg
 
 
@@ -18,6 +18,10 @@ with dpg.window(label="main", tag="Primary Window", no_title_bar=True, no_collap
     
     # Selecting Board
     dpg.add_listbox(label="Select Board", items=gui.boardList, width=80, callback=gui.getBoard)
+    dpg.add_listbox(label="Select COM Num", items=[0,1,2,3,4,5], width=80, callback=gui.getBoard)
+    dpg.add_listbox(label="Select File", items=gui.boardList, width=80, callback=gui.getFile)
+    dpg.add_input_text(label="Input File path", width=200, callback=gui.getFile)
+    
         
     
 
